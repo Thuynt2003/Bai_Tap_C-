@@ -1,10 +1,41 @@
-﻿using T2204M.session1;
+﻿using System.Security.Cryptography.X509Certificates;
+using T2204M.session1;
 using T2204M.session1.baiTap;
 using T2204M.session3;
 using T2204M.session3.baiTap;
+using T2204M.session4;
+using T2204M.session4.baitap;
 
 public class program
 {
+    public static void Main(string[] args)
+    {
+        News n = new News(1, "abcd", "13-12-2003", "Nguyen van a", "CDEF");
+        n[0] = 1;
+        n[1] = 2;
+        n[2] = 3;
+        n.Calculate();
+        n.DisPlay();
+    }
+        public static void Main4(string[] args)
+    {
+        //DemoDelegate.Alert("Cam thanh vien duoi 18 tuoi");
+        //DemoDelegate d = new DemoDelegate();
+        //d.ShowMessage("Canh bao lan thu nhat");
+        PrintString ps = new PrintString(ShowDanger);
+        ps += (s) =>
+        {
+            Console.WriteLine("Anonymus:" + s);
+
+        };
+         
+
+        
+    }
+    public static void ShowDanger(string mg)
+    {
+        Console.WriteLine("Anonymus:" + mg);
+    }
     public static void Main2(String[] args)
     {
         Car c = new Car() { Brand = "Toyota", Type = "Sedan" };
@@ -12,12 +43,13 @@ public class program
         Console.WriteLine(c[1]);
         c.machines.Add("Loa");
     }
-    public static void Main(String[] args)
+    public static void Main3(String[] args)
     {
         Khvn vn = new Khvn(01, "Nguyen Thi A", "12-12-2003", 110,"san xuat");
         Console.WriteLine(vn.tinhtiendien());
         Khnn nn = new Khnn(01, "Mr.Hoa", "23-4-3006", 200, "Nuoc Ngoai");
         Console.WriteLine(nn.thanhtoan());
+      
         
     }
     public static void Main1(String[]args)
@@ -33,7 +65,7 @@ public class program
         //ns[2] = 25;
         //foreach(int n in ns)
         //{
-        //n
+        //nqcxzA
         //}   
         //for (int i = 0;i< ns.Length; i++)
         //{
