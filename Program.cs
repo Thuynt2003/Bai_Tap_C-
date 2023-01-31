@@ -1,14 +1,109 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using T2204M.session1;
 using T2204M.session1.baiTap;
 using T2204M.session3;
 using T2204M.session3.baiTap;
 using T2204M.session4;
 using T2204M.session4.baitap;
+using System.Net.Http;
+using T2204M.session5;
+using Newtonsoft.Json;
+using T2204M.qlisv;
 
 public class program
 {
-    public static void Main(string[] args)
+   public static void Main(string[] args)
+    {
+        QuanLiSV ql = new QuanLiSV();
+        int option = 0;
+        while (option != 9)
+        {
+            Console.WriteLine("1.Them Sinh Vien.");
+            Console.WriteLine("2.Cap nhat thong tin sinh vien boi ID.");
+            Console.WriteLine("3.Xoa sinh vien boi ID");
+            Console.WriteLine("4.Tim kiem sinh vien theo ten");
+            Console.WriteLine("5.Sap xep sinh vien theo Diem trung binh.");
+            Console.WriteLine("6.Sap xep sinh vien theo ten.");
+            Console.WriteLine("7.Sap xep sinh vien theo id.");
+            Console.WriteLine("8.Hien thi");
+            Console.WriteLine("9.thoat");
+
+            Console.WriteLine("Xin moi lua chon: ");
+            option = int.Parse(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    ql.ThemSV();
+                    break;
+                case 2:
+                    ql.updateID();
+                    break;
+                case 3:
+                    ql.XoaSvTheoID();
+                    break;
+                case 4:
+                    ql.SeachName(); 
+                    break;
+                case 5:
+                    ql.sapxepTb();
+                    break;
+                case 6:
+                    ql.sapxepTen(); 
+                    break;
+                case 7:
+                    ql.sapxepID();
+                    break;
+                case 8:
+                    ql.Display(ql.qliSV);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+public static void Main6(string[] args)
+    {
+        Thread t = new Thread(RunThread);
+        t.Start("Xin Chao");
+        Thread t2 = new Thread(delegate ()
+        {
+            Console.WriteLine("Demo anonymous function");
+        });
+        t2.Start();
+        Console.WriteLine("Main done");
+    }
+
+     static async Task<Root>CallApi()
+    {
+        string url = "https://api.openweathermap.org/data/2.5/weather?q=Hanoi,vietnam&appid=09a71427c59d38d6a34f89b47d75975c&units=metric";
+        HttpClient http = new HttpClient();
+        var rs = await http.GetAsync(url);    // Lấy data về 
+        if(rs.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            string content = await rs.Content.ReadAsStringAsync();
+            Root r = JsonConvert.DeserializeObject<Root>(content);
+            return r;
+        }
+        return null;
+    }
+    static void RunThread(object o)
+    {
+        for(int i= 0;i<20;i++)
+        {
+            Console.WriteLine(o+":"+i);
+            try
+            {
+                Thread.Sleep(1000);
+            }   catch(Exception e)
+            {
+
+            } 
+        }
+    }
+        
+    public static void Main5(string[] args)
     {
         News n = new News(1, "abcd", "13-12-2003", "Nguyen van a", "CDEF");
         n[0] = 1;
@@ -82,15 +177,16 @@ public class program
         ts = Console.ReadLine();
         Console.Write("Nhap vao mau so: ");
         string ms;
-        ms = Console.ReadLine();
-            try
-            {
-                PhanSo PS = new PhanSo(int.Parse(ts), int.Parse(ms));
-                Console.Write("Phan so ban dang co la: ");
+        PhanSo PS = new PhanSo();
+                Console.Write("Phan so co dang la: ");
                 PS.InPS();
                 PS.RutGonPS();
                 Console.Write("Phan so sau khi rut gon la: ");
-                PS.InPS();
+                PS.InPS();        ms = Console.ReadLine();
+            try
+            {
+                PhanSo PS1 = new PhanSo(int.Parse(ts), int.Parse(ms));
+
           
             }
             catch (Exception ignored)

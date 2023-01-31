@@ -13,3 +13,5 @@ D:\Bai tap\C#\T2204M\obj\Debug\net6.0\refint\T2204M.dll
 D:\Bai tap\C#\T2204M\obj\Debug\net6.0\T2204M.pdb
 D:\Bai tap\C#\T2204M\obj\Debug\net6.0\T2204M.genruntimeconfig.cache
 D:\Bai tap\C#\T2204M\obj\Debug\net6.0\ref\T2204M.dll
+D:\Bai tap\C#\T2204M\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Bai tap\C#\T2204M\obj\Debug\net6.0\T2204M.csproj.CopyComplete

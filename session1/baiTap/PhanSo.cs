@@ -10,7 +10,9 @@ namespace T2204M.session1.baiTap
     {
         int ts;
         int ms;
-
+        public PhanSo()
+        {
+        }
         public PhanSo(int ts,int ms)
         {
             this.ts = ts;
